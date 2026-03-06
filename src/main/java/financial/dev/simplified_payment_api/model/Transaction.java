@@ -32,11 +32,4 @@ public class Transaction {
 
     private LocalDateTime horaTransaction;
 
-    public Transaction(TransactionRequest transactionRequest){
-        this.amount = transactionRequest.amount();
-        this.sender = transactionRequest.sender();
-        this.receiver = transactionRequest.receiver();
-        this.horaTransaction = LocalDateTime.now();
-    }
-
 }
