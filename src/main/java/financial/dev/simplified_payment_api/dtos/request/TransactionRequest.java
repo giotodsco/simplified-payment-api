@@ -4,5 +4,5 @@ import financial.dev.simplified_payment_api.model.User;
 
 import java.math.BigDecimal;
 
-public record TransactionRequest(BigDecimal amount, User sender, User receiver){
+public record TransactionRequest(BigDecimal amount, Long sender, Long receiver){
 }
