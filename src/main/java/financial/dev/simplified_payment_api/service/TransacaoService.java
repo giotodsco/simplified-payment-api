@@ -16,6 +16,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -65,5 +66,11 @@ public class TransacaoService {
             String message = (String) authorizationResponse.getBody().get("status");
             return "success".equalsIgnoreCase(message);
         } else return false;
+    }
+
+    public List<TransactionResponse> listarAll(){
+        return transactionRepository.findAll().stream()
+                .map(TransactionResponse::new)
+                .toList();
     }
 }
