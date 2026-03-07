@@ -1,5 +1,7 @@
 package financial.dev.simplified_payment_api.service;
 
+import financial.dev.simplified_payment_api.dtos.request.UserRequest;
+import financial.dev.simplified_payment_api.dtos.response.UserResponse;
 import financial.dev.simplified_payment_api.model.User;
 import financial.dev.simplified_payment_api.model.enuns.TipoUser;
 import financial.dev.simplified_payment_api.repository.UserRepository;
@@ -7,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Service
 public class UserService {
@@ -30,5 +33,18 @@ public class UserService {
 
     public User save(User user){
         return repository.save(user);
+    }
+
+    public UserResponse createUser(UserRequest request){
+        User user = new User(request);
+        repository.save(user);
+
+        return new UserResponse(user);
+    }
+
+    public List<UserResponse> listarAll(){
+        return repository.findAll().stream()
+                .map(UserResponse::new)
+                .toList();
     }
 }
