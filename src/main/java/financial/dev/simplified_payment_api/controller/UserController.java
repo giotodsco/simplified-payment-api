@@ -1,5 +1,6 @@
 package financial.dev.simplified_payment_api.controller;
 
+import financial.dev.simplified_payment_api.docs.UserControllerDocs;
 import financial.dev.simplified_payment_api.dtos.request.UserRequest;
 import financial.dev.simplified_payment_api.dtos.response.UserResponse;
 import financial.dev.simplified_payment_api.service.UserService;
@@ -12,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/user")
-public class UserController {
+public class UserController implements UserControllerDocs {
 
     @Autowired
     private UserService service;
